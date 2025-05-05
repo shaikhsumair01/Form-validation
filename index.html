@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Student Enrollment form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="px-20 py-10">
+            <h1 class="text-3xl font-semibold text-gray-700">Application for student Enrollment</h1>
+            <p class="mt-5 text-base font-medium text-gray-500">Students can enroll for this exciting curriculum. They are supposed to fill their credentials such as name, class, email, phone number. They can even modify and delete their records as they see fit.</p>
+            <h2 class="text-xl font-semibold text-gray-700 mt-6">Student Details:</h2>
+
+            <form  action="/" method="get" class="grid grid-cols-2 grid-rows-3 gap-10 sm:grid-cols-6 mt-4">
+                <div class="col-span-3">
+                <label class="text-lg font-light text-grey-600">Student Name:</label>
+                <input type="text" name="Name" id="Name" autocomplete="given-name" placeholder="Enter your Name" class=" block w-full rounded-md bg-white px-2 py-1 text-base font-medium text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+               
+                </div>
+                <div class="col-span-3">
+                <label class="text-lg font-light text-grey-600">Student ID:</label>
+                <input type="text" name="ID" id="ID" autocomplete="student-ID" placeholder="Enter your student ID" class="block w-full rounded-md bg-white px-2 py-1 text-base font-medium text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+    
+                </div>
+           
+                <div class="col-span-3">
+                <label class="text-lg font-light text-grey-600">Student Email:</label>
+                <input type="email" name="Email" id="Email" autocomplete="email-address" placeholder="Enter your Email" class="block w-full rounded-md bg-white px-2 py-1 text-base font-medium text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+               
+                </div>
+                <div class="col-span-3">
+                <label class="text-lg font-light text-grey-600">Contact number:</label>
+                <input type="number" name="Contact" id="Contact" autocomplete="Contact Number" placeholder="Enter your Contact number" class="block w-full rounded-md bg-white px-2 py-1 text-base font-medium text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+                
+                </div>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-1 focus:ring-blue-300 font-medium rounded-md text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>     
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
