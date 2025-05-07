@@ -6,9 +6,20 @@
 .error{
    @apply text-base font-medium text-red-500;
 }
-.recordClass{
- @apply flex mt-4 justify-center gap-20 text-base font-semibold text-center text-blue-700;
+.table{
+   @apply w-full text-left;
 }
-.itemClass{
-   @apply border-2 border-red-300;
+.recordElements{
+ @apply  text-base font-semibold text-center text-white;
+}
+
+
+.submitbtn{
+   @apply text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-1 focus:ring-blue-300 font-semibold rounded-md text-sm px-2 py-1 text-center ;
+}
+.update{
+   @apply text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-300 font-medium rounded-md text-sm px-1 py-0.5 text-center;
+  }
+.del{
+ @apply text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-1 focus:ring-red-300 font-medium rounded-md text-sm px-1 py-0.5 text-center;
 }
