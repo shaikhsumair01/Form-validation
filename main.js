@@ -16,7 +16,7 @@ const form = document.getElementById("Form-El");
 // checks the localStorage if user has already submited an input and retrieves it if it is present. 
 const elements = JSON.parse(localStorage.getItem("userDetail"))||[];
 
-// loads the localstorage (recreating the table when the window loads)
+// loads the localstorage (creating the table when the window loads)
 window.onload = function(){
     createRecord(elements)
 }
@@ -30,7 +30,8 @@ function checkInput(){
     // getting values
     let isValid = true;
     
-    let name = username.value.trim() // checks if the user has accidentally added some space before typing the values
+    let name = username.value.trim() 
+    // checks if the user has accidentally added some space before typing the values
    
     // Checks for name error
     if (name.length === 0 || !/^[A-Za-z\s]+$/.test(name)) {
@@ -90,8 +91,10 @@ function checkInput(){
     } 
 }
 
-// takes 2 parameters, the target element's small (error text) item (eg nameError), and the message to be printed.
-// addes the specified styling to the error item and prints the item with the message passed in it.
+/* takes 2 parameters, the target element's "small" [/inline para](which is the error text) item (eg nameError),
+ and the message to be printed.
+addes the specified styling to the error item and 
+prints the item with the message passed in it.*/
 function addErrorClass(target, errormessage){
     target.classList.remove("message");
     target.classList.add("error");
@@ -99,7 +102,8 @@ function addErrorClass(target, errormessage){
    
 }
 
-// Once the form is submitted, resets the error text message back to normal message (hint of the item to be validated)
+/* Once the form is submitted, resets the error text message back to normal message 
+(hint of the item to be validated)*/
 function removeErrorClass(target, message){
     target.classList.remove("error");
     target.classList.add("message");
@@ -109,7 +113,10 @@ function removeErrorClass(target, message){
 // Creating records
 // function for storing user inputs
 function storedetails(name,id,email,contact){
-    // checks if there are existing details in element array. If user input matches the items in the array, it will return otherwise it will append the object to the array.
+    /* checks if the array contains the same object as the object called "existing".
+     If user input (which are stored in object "existing") matches the items in the array, 
+     it will return the function, 
+     otherwise it will append the object to the array.*/
     let existing = {name:name, id:id, email:email, contact:contact}
     if (elements.some(user => JSON.stringify(user) === JSON.stringify(existing))) {
         alert("We already have those elements");
@@ -122,17 +129,22 @@ function storedetails(name,id,email,contact){
     }
     
     if(localStorage.getItem("userDetail")){ //fetches the localStorage value. 
-        return ; // If the storage is already present we will return null but if it isn't then we will create the table.  
+        return ; 
+        /*If the storage is already present we will return it since 
+        we don't want to do anything with it for now.
+        But if it is empty then we will add the table elements.*/  
 
     }
     else{
-        createRecord(elements); // Used for creating the records (when user modifies them)
+        createRecord(elements); // Used for creating new records (when user modifies them)
     }
 
    
 }
 
-//Passes the array(elements) of objects. Used for parsing them and creating a dom element (td) for each of the item (data) and storing it into table row
+/*Passes the array(elements) of objects.
+ Used for parsing them and creating a dom element (td) for each of the item (data) 
+ and store it into table row*/
 function createRecord(arr){
     // looping through the array element and getting each object
     arr.forEach((obj)=>
@@ -144,47 +156,57 @@ function createRecord(arr){
         // creating a paragraph item for each object (as a list item) and storing them in newRec 
         Object.keys(obj).forEach((index)=>{
         let newvalue = document.createElement("td");
-        newvalue.classList.add("p-3")
+        newvalue.classList.add("p-3");
             newvalue.textContent = `${obj[index]}`;
             newRec.append(newvalue);
         })
-    // creating updatebtn and deletebtn explicitly as they are not part of the element array. Storing them inside the newRec
+    /* creating updatebtn and deletebtn explicitly as they are not part of the element array. 
+    Storing them inside the newRec*/
     const update_cell = document.createElement("td"); // creating cell for update button
-    update_cell.classList.add("p-3")
-    const updateBtn = document.createElement("button");
+    update_cell.classList.add("p-3");
+    const updateBtn = document.createElement("button"); // creating update button
     updateBtn.textContent = "Update record";
-    updateBtn.classList.add("update");
-    update_cell.append(updateBtn);
+    updateBtn.classList.add("update"); 
+    update_cell.append(updateBtn); // adding it to the update cell
 
     const delete_cell = document.createElement("td"); // creating cell for delete button
     delete_cell.classList.add("p-3")
-    const deleteBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button"); // creating delet button
     deleteBtn.textContent="Delete record";
     deleteBtn.classList.add("del");
-    delete_cell.append(deleteBtn)
-    newRec.append(update_cell, delete_cell);
-    updateBtn.addEventListener("click", updateRecord)
-    deleteBtn.addEventListener("click", deleteRecord)
-    document.getElementById("record-body").append(newRec);
+    delete_cell.append(deleteBtn); // adding delete button to delete cell
+    newRec.append(update_cell, delete_cell); // appending update cell and delete cell to newRecord
+    updateBtn.addEventListener("click", updateRecord) // adding update button functionality
+    deleteBtn.addEventListener("click", deleteRecord) // adding delete button functionality
+    document.getElementById("record-body").append(newRec); // adding newRecord to the dom
     })
 }
+
 function updateRecord(e) {
-    e.preventDefault();
+    e.preventDefault(); // don't want to cause any event 
 
-    const selectedbtn = e.target;
-    
+    const selectedbtn = e.target; // locates where the event triggered
+   
     if (selectedbtn.classList.contains("update")) {
-        const recordRow = selectedbtn.parentElement.parentElement; // Get the row
-        const recordIndex = Array.from(recordRow.parentElement.children).indexOf(recordRow); // Get row index
-        const selectedUser = elements[recordIndex]; // Get the corresponding object
+        const recordRow = selectedbtn.parentElement.parentElement; 
 
-        // Prefill form fields with existing values
+        // Gets the row in which the td of select btn is present (where the event triggered)
+        // update btn-> td -> recordRow = tr  
+        const recordIndex = Array.from(recordRow.parentElement.children).indexOf(recordRow);
+
+         // Get row index of the tbody's children. 
+         // (tr.parent = tbody.. tbody.children => nodelist of tr=> indexOf(recordRow) == row where the click triggered)
+
+        const selectedUser = elements[recordIndex]; 
+        // Get the corresponding object which contains our required details to be updated
+
+        // Prefill form fields with existing values which we have typed and stored
         username.value = selectedUser.name;
         userid.value = selectedUser.id;
         emailAdd.value = selectedUser.email;
         contactno.value = selectedUser.contact;
 
-        // Modify the save button to update the record instead of adding a new one
+        // Modifying the save button to update the record instead of adding a new one
         btn.textContent = "Update Record";
 
         btn.onclick = function(e) {
@@ -195,7 +217,7 @@ function updateRecord(e) {
                 name: username.value.trim(),
                 id: userid.value.trim(),
                 email: emailAdd.value.trim(),
-                contact: contactno.value.trim()
+                contact: contactno.value.trim(),
             };
 
             // Save updated array to local storage
@@ -211,23 +233,34 @@ function updateRecord(e) {
             contactno.value = "";
 
             // Refresh table
-            document.getElementById("record-body").innerHTML = ""; // Clear table
-            createRecord(elements); // Re-create table with updated values
+            JSON.parse(localStorage.getItem("userDetail")).splice(recordIndex,1);
+            elements.splice(recordIndex, 1);
+            if(localStorage.getItem("userDetail")){
+                console.log(localStorage.getItem("userDetail"));
+                return ;
+            }
+            else{
+                createRecord(elements); // Re-create table with updated values
+            }
         };
     }
 }
 function deleteRecord(e){
     e.preventDefault();
-const selectedbtn = e.target;
+const selectedbtn = e.target; // selects the button we clicked
 if (selectedbtn.classList.contains("del")){
-    const recordcell = selectedbtn.parentElement.parentElement;
-    console.log(recordcell)
-        const recordIndex = Array.from(recordcell.parentElement.children).indexOf(recordcell);
-        console.log(recordIndex)
-        elements.splice(recordIndex, 1); // Remove from array
-        localStorage.setItem("userDetail", JSON.stringify(elements)); // Update storage
+    const recordRow = selectedbtn.parentElement.parentElement; 
+    /* selects the record row in which the click event took place 
+    (since button is inside a td which is the parent. 
+     And the td's parent is tr (the row in which the button is present))*/
+    
+        const recordIndex = Array.from(recordRow.parentElement.children).indexOf(recordRow);
+    //    recordRow.parentElement = tbody. tbody.child would be all the rows created and appended (which is basically a node list).
+
+        elements.splice(recordIndex, 1); // Remove from array from the nodelist at the index position of the click event
+        localStorage.setItem("userDetail", JSON.stringify(elements)); // Update storage so that the deleted value is removed from the browser
         
-        recordcell.remove(); // Remove from DOM
+        recordRow.remove(); // Remove from DOM
 
 }
 }
