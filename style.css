@@ -7,24 +7,28 @@
 .text-box{
   @apply block w-full rounded-md bg-white px-2 py-1 text-base font-semibold text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 placeholder:font-medium focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm;
 }
-/* Style for error message */
+/* Style for normal message */
 .message{
    @apply text-sm font-medium text-green-700;
 }
+/* style for error message */
 .error{
    @apply text-base  font-medium text-red-500;
 }
+/* table section */
 .table{
    @apply w-full md:w-screen text-left;
 }
+/* record row */
 .record-body,.record-head{
    @apply w-screen;
 }
+/* record elements */
 .recordElements{
  @apply w-screen text-base sm:text-sm font-semibold text-center text-white;
 }
 
-
+/* buttons */
 .submitbtn{
    @apply w-[75%] md:w-auto text-white bg-linear-to-t from-blue-400 to-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-1 focus:ring-blue-300 font-semibold rounded-md text-sm px-2 py-1 text-center ;
 }
