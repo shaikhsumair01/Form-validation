@@ -413,7 +413,11 @@
     width: 100vw;
   }
 }
+.record-body,.record-head {
+  width: 100vw;
+}
 .recordElements {
+  width: 100vw;
   text-align: center;
   font-size: var(--text-base);
   line-height: var(--tw-leading, var(--text-base--line-height));

@@ -17,8 +17,11 @@
 .table{
    @apply w-full md:w-screen text-left;
 }
+.record-body,.record-head{
+   @apply w-screen;
+}
 .recordElements{
- @apply  text-base sm:text-sm font-semibold text-center text-white;
+ @apply w-screen text-base sm:text-sm font-semibold text-center text-white;
 }
 
 
