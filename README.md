@@ -11,3 +11,8 @@ In order to run the file on your computer, download the entire repo as it is.
 If the styles don't work use this tailwind cli in your terminal inside vscode:
  npx @tailwindcss/cli -i ./style.css -o ./output.css --watch     
  
+page builder link:
+ https://shaikhsumair01.github.io/Form-validation/
+
+github link:
+https://github.com/shaikhsumair01/Form-validation.git
