@@ -45,13 +45,13 @@ function checkInput(){
 
     // checks for id error
     let id = userid.value.trim()
-    if (/^[0-9]+$/.test(id) && id.length < 6) {
-        addErrorClass(idError, "ID must be at least 6 digits.");
-        isValid = false;
-    } else {
-        idError.textContent = "";
-       
+    if (!/^[0-9]{6,}$/.test(id)) {  
+        addErrorClass(idError, "ID must be at least 6 digits.");  
+        isValid = false;  
+    } else {  
+        idError.textContent = "";  
     }
+    
     
     // checks for email error
     let email = emailAdd.value.trim()
