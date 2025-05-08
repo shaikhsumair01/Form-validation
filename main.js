@@ -78,6 +78,8 @@ function checkInput(){
     if (isValid) {
         alert("Form submitted successfully!");
         storedetails(name,id,email,contact)
+        // reloading the file on submitting the form
+        window.location.reload();
         // emptying the user inputs after form submission
         username.value = "";
         userid.value= "";
@@ -221,8 +223,14 @@ function updateRecord(e) {
             };
 
             // Save updated array to local storage
+            /* removing the record object where the click event occured 
+            from the array since we are pushing the updated record in the end of the list  */  
+            elements.splice(recordIndex, 1);
+            /* removing it from the local storage as well before updating the storage 
+            so that an empty record doesn't get created*/
+            JSON.parse(localStorage.getItem("userDetail")).splice(recordIndex,1);
+           
             localStorage.setItem("userDetail", JSON.stringify(elements));
-
             // Reset button text to original
             btn.textContent = "Submit";
 
@@ -233,10 +241,8 @@ function updateRecord(e) {
             contactno.value = "";
 
             // Refresh table
-            JSON.parse(localStorage.getItem("userDetail")).splice(recordIndex,1);
-            elements.splice(recordIndex, 1);
             if(localStorage.getItem("userDetail")){
-                console.log(localStorage.getItem("userDetail"));
+                // since we don't need to do anything if the localstorage has items
                 return ;
             }
             else{
