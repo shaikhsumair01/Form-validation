@@ -485,6 +485,9 @@
     --tw-outline-style: none;
     outline-style: none;
   }
+  @media (width >= 40rem) {
+    width: 100%;
+  }
   @media (width >= 48rem) {
     width: auto;
   }
@@ -516,6 +519,9 @@
   &:focus {
     --tw-outline-style: none;
     outline-style: none;
+  }
+  @media (width >= 40rem) {
+    width: 100%;
   }
   @media (width >= 48rem) {
     width: auto;
