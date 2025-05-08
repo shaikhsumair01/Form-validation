@@ -9,44 +9,44 @@
 </head>
 <body>
     <!-- Parent-container -->
-    <div class="container w-screen">
+    <div class="container max-w-screen-lg">
         <!-- Aligning items to center -->
-        <div class="px-20 py-10">
+        <div class="px-20 py-10 sm:px-4 sm:py-5">
             <!-- title and description -->
-            <h1 class="text-3xl font-semibold text-gray-700">Application for <span class="text-blue-800 italic">Student Enrollment</span></h1>
+            <h1 class="text-3xl sm:text-xl font-semibold text-gray-700">Application for <span class="text-blue-800 italic">Student Enrollment</span></h1>
             <p class="mt-5 text-base font-medium text-gray-500">Students can now enroll for this exciting curriculum. They are supposed to fill their credentials such as name, class, email, phone number. They can even modify and delete their records as they see fit.</p>
-            <h2 class="text-xl font-semibold text-gray-700 mt-6">Student Details:</h2>
+            <h2 class="text-xl sm:text-lg font-semibold text-gray-700 mt-6">Student Details:</h2>
 
             <!-- Form (as a grid container) -->
-            <form  action="/" method="get" id="Form-El" class="grid grid-cols-2 grid-rows-3 gap-10 sm:grid-cols-6 mt-4 mb-6">
+            <form  action="/" method="get" id="Form-El" class="grid grid-cols-2 grid-rows-3 gap-10 sm:grid-cols-1  mt-4 mb-6">
                 <!--Aligning items in a 2 by 2 grid and taking the whole width of the viewport -->
                 
                 <!-- Name input  -->
-                <div class="col-span-3">
-                <label class="text-lg font-light text-grey-600">Student Name:</label>
-                <input type="text" name="Name" id="Name" autocomplete="given-name" placeholder="Enter your Name" class=" block w-full rounded-md bg-white px-2 py-1 text-base font-semibold text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 placeholder:font-medium focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+                <div class="col-span-3 ">
+                <label class="label">Student Name:</label>
+                <input type="text" name="Name" id="Name" autocomplete="given-name" placeholder="Enter your Name" class="text-box">
                 <small class="message" id="nameError">eg: John Doe</small><br>
                 </div>
                 
                 <!-- Id input -->
                 <div class="col-span-3">
-                <label class="text-lg font-light text-grey-600">Student ID:</label>
-                <input type="text" name="ID" id="ID" autocomplete="student-ID" placeholder="Enter your student ID" class="block w-full rounded-md bg-white px-2 py-1 text-base font-semibold text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 placeholder:font-medium focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+                <label class="label">Student ID:</label>
+                <input type="text" name="ID" id="ID" autocomplete="student-ID" placeholder="Enter your student ID" class="text-box">
                 <small class="message" id="idError" class="message">eg: 253476 (should have 6 digits)</small><br>
 
                 </div>
                 
                 <!-- Email input -->
                 <div class="col-span-3">
-                <label class="text-lg font-light text-grey-600">Student Email:</label>
-                <input type="email" name="Email" id="Email" autocomplete="email-address" placeholder="Enter your Email" class="block w-full rounded-md bg-white px-2 py-1 text-base font-semibold text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 placeholder:font-medium focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm">
+                <label class="label">Student Email:</label>
+                <input type="email" name="Email" id="Email" autocomplete="email-address" placeholder="Enter your Email" class="text-box">
                 <small class="message" id="emailError">eg: John_doe@gmail.com </small><br>
                 </div>
 
                 <!-- Contact input -->
                 <div class="col-span-3">
-                <label class="text-lg font-light text-grey-600">Contact number:</label>
-                <input type="Number" name="Contact" id="Contact" autocomplete="Contact Number" placeholder="Enter your Contact number" class="block w-full rounded-md bg-white px-2 py-1 text-base font-semibold text-blue-700 outline-1 -outline-offset-1 outline-blue-700 placeholder:text-blue-400 placeholder:font-medium focus:outline-2 focus:-outline-offset-2 focus:outline-blue-800 sm:text-sm  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                <label class="label">Contact number:</label>
+                <input type="Number" name="Contact" id="Contact" autocomplete="Contact Number" placeholder="Enter your Contact number" class="text-box  [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                 <small class="message" id="contactError">eg: 9820191756 (should contain 10 digits)</small><br>
                 </div>
 
@@ -55,7 +55,7 @@
         </form>
     </div>
     <!-- creating another container for the record  -->
-        <div class="container-2 bg-blue-900 w-screen">
+        <div class="container-2 bg-blue-900 w-screen overflow-x-auto">
         <h2 class = "text-center font-semibold text-2xl text-white">Student Record</h2>
         <table id="record" class="table">
         <thead class="record-head">   
